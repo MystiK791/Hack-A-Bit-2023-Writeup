@@ -1,0 +1,29 @@
+Cracking strategy:
+	- Length of source text can be found by dividing the length of the encrypted text by 2
+	- ASCII encrypted string can be found by:
+		- Dividing the fully encrypted string into 2-character-long chunks
+		- Defining a list called result_chars
+		- For every chunk in the string:
+			- Try all ASCII characters (could be optimized by defining the maximum 'shift' of each encrypted character, but the performance gain is minimal)
+			- md5 hash the current character
+			- Hexdigest the hash with a 2-character truncation
+			- Compare the hexdigest to the original chunk
+			- If they match, append the hexdigest to result_chars
+			- Note: technically the first 5 characters wouldn't need to be bruteforced, however, I'm lazy :P
+	- Run ord() on every value in result_chars, and saving the result to a list called ord_chars
+	- OTP can be fully cracked with the following methodology
+		- We know the first 5 characters are "flag{"
+		- The OTP cannot be more than 5 characters long
+		- The difference between the hashed and known ords is the part of the OTP that was used. 
+		- The full OTP can be retrieved by using this equation on the first 5 characters
+			- Define "flag{" as a string called "knownpart"
+			- Use the following equation:
+				- set OTP to ''
+				- For the first 5 characters:
+					OTP[index] = (ord(knownpart[index]) - ord_chars[index])
+	- Define result as a blank srting
+	- For every ascii value in ord_chars:
+		- result += chr(ord_chars[index] + int[otp[index%5]})
+	- Print result
+
+Encryption broken :)

@@ -1,0 +1,21 @@
+OTP is calculated by:
+	Ranomly selecting 5 numbers between 0 and 9
+	
+Hash algorithm:
+	For every character in the input:
+		calculated_character = 
+			- The ascii value of the selected character
+			- Subtracted by the following:
+				- The OTP at index[The character's index % 5]
+			- The result converted into an ASCII character
+				- For example, if the OTP is 13253, and the input string is "bananas", encrypting the 's' would look like:
+					- calculated_character = chr(ord('s') - int(otp[index %5}))
+					- calculated_character = chr(115 - int(otp[1]))
+					- calculated_character = chr(115 - 3)
+					- calculated_character = chr(112)
+					- calculated_character = 'p'
+		full_md5_hash =
+			- md5 hash of the following:
+				- calculated_character encoded into ascii
+		Appends the first 2 characters of the hexdigested md5 hash to the result
+			- This means that the source text length is double the length of the input
