@@ -6,5 +6,4 @@ print(data)
 
 sorted_numbers = sort(data)
 
-
 print(sorted_numbers[52133])
