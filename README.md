@@ -1,5 +1,5 @@
 ## Hack-A-Bit 2023 Writeup
-Welcome! Here you'll find writeups on all the challenges of the Programming (unfinished) and Cryptography categories of Hack-A-Bit.
+Welcome! Here you'll find writeups on all the challenges of the Programming and Cryptography categories of Hack-A-Bit.
 
 The repo is structured as follows:
 - Each folder in the root of the repo represents a category
